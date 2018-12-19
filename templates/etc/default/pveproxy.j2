@@ -1,0 +1,5 @@
+ALLOW_FROM="{{ proxmox_pveproxy_allow_from | join(',') }}"
+CIPHERS="{{ proxmox_pveproxy_cipers | join(':') }}"
+DENY_FROM="{{ proxmox_pveproxy_deny_from }}"
+DHPARAMS="/etc/ssl/certs/dhparam.pem"
+POLICY="{{ proxmox_pveproxy_policy }}"

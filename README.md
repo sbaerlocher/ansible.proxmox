@@ -4,6 +4,8 @@
 
 ## Description
 
+This is a role with which it is possible to configure Proxmox VE.
+
 ## Installation
 
 ```bash
@@ -12,14 +14,20 @@ ansible-galaxy install sbaerlocher.proxmox
 
 ## Requirements
 
+None
+
 ## Role Variables
 
 | Variable             | Default     | Comments (type)                                   |
 | :---                 | :---        | :---                                              |
-| | | |
-| | | |
+| proxmox_pveproxy_allow_from | ["127.0.0.1"] | |
+| proxmox_pveproxy_cipers | ["ECDHE-ECDSA-AES256-GCM-SHA384","ECDHE-RSA-AES256-GCM-SHA384","ECDHE-ECDSA-CHACHA20-POLY1305","ECDHE-RSA-CHACHA20-POLY1305","ECDHE-ECDSA-AES128-GCM-SHA256","ECDHE-RSA-AES128-GCM-SHA256","ECDHE-ECDSA-AES256-SHA384","ECDHE-RSA-AES256-SHA384","ECDHE-ECDSA-AES128-SHA256","ECDHE-RSA-AES128-SHA256"] | |
+| proxmox_pveproxy_deny_from | 'all' | |
+| proxmox_pveproxy_policy | 'allow' | |
 
 ## Dependencies
+
+None
 
 ## Example Playbook
 
@@ -31,6 +39,10 @@ ansible-galaxy install sbaerlocher.proxmox
 
 ## Changelog
 
+### 1.0.0
+
+* inital commit
+
 ## Author
 
 * [Simon Bärlocher](https://sbaerlocher.ch)
@@ -41,4 +53,4 @@ This project is under the MIT License. See the [LICENSE](https://sbaerlo.ch/lice
 
 ## Copyright
 
-(c) 2017, Simon Bärlocher
+(c) 2019, Simon Bärlocher
