@@ -1,38 +1,37 @@
 ---
 # tasks file for sbaerlocher.proxmox
 
-- name: add OS specific variables
-  include_vars: "{{ loop_vars }}"
-  with_first_found:
-    - files:
-        - "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
-        - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
-        - "{{ ansible_distribution }}.yml"
-        - "{{ ansible_os_family }}.yml"
-        - "{{ ansible_system }}.yml"
-        - "defaults.yml"
-      paths:
-        - "vars"
-  loop_control:
-    loop_var: loop_vars
-  tags:
-    - configuration
-    - packages
+- name: 'proxmox : generate DHE key-exchange'
+  become: true
+  command: openssl dhparam -dsaparam -out /etc/ssl/certs/dhparam.pem 4096
+  args:
+    chdir: /etc/ssl/certs
+    creates: dhparam.pem
 
-- name: include distribution tasks
-  include_tasks: "{{ loop_distribution }}"
-  with_first_found:
-    - files:
-        - "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
-        - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
-        - "{{ ansible_distribution }}.yml"
-        - "{{ ansible_os_family }}.yml"
-        - "{{ ansible_system }}.yml"
-        - "defaults.yml"
-      paths:
-        - "distribution"
-  loop_control:
-    loop_var: loop_distribution
-  tags:
-    - configuration
-    - packages
+- name: 'proxmox : configuration pveproxy'
+  become: true
+  template:
+    src: 'etc/default/pveproxy.j2'
+    dest: '/etc/default/pveproxy'
+    owner: root
+    group: www-data
+    mode: '0440'
+  notify:
+    - restart pveproxy
+
+- name: 'proxmox : download iso'
+  get_url:
+    url: '{{ item.url }}'
+    dest: '/var/lib/vz/template/iso/{{ item.name }}.iso'
+    mode: 0440
+  when: item.state != 'absent'
+  with_items:
+    - '{{ proxmox_pve_iso }}'
+
+- name: 'proxmox : delete iso'
+  file:
+    dest: '/var/lib/vz/template/iso/{{ item.name }}.iso'
+    state: absent
+  when: item.state == 'absent'
+  with_items:
+    - '{{ proxmox_pve_iso }}'
