@@ -18,3 +18,20 @@
     mode: '0440'
   notify:
     - restart pveproxy
+
+- name: 'proxmox : download iso'
+  get_url:
+    url: '{{ item.url }}'
+    dest: '/var/lib/vz/template/iso/{{ item.name }}.iso'
+    mode: 0440
+  when: item.state != 'absent'
+  with_items:
+    - '{{ proxmox_pve_iso }}'
+
+- name: 'proxmox : delete iso'
+  file:
+    dest: '/var/lib/vz/template/iso/{{ item.name }}.iso'
+    state: absent
+  when: item.state == 'absent'
+  with_items:
+    - '{{ proxmox_pve_iso }}'
