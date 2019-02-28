@@ -24,7 +24,7 @@
     url: '{{ item.url }}'
     dest: '/var/lib/vz/template/iso/{{ item.name }}.iso'
     mode: 0440
-  when: item.state != 'absent'
+  when: item.state != 'absent' and proxmox_pve_iso is defined
   with_items:
     - '{{ proxmox_pve_iso }}'
 
@@ -32,6 +32,6 @@
   file:
     dest: '/var/lib/vz/template/iso/{{ item.name }}.iso'
     state: absent
-  when: item.state == 'absent'
+  when: item.state == 'absent' and proxmox_pve_iso is defined
   with_items:
     - '{{ proxmox_pve_iso }}'

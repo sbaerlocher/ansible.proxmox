@@ -24,7 +24,7 @@ None
 | proxmox_pveproxy_cipers | ["ECDHE-ECDSA-AES256-GCM-SHA384","ECDHE-RSA-AES256-GCM-SHA384","ECDHE-ECDSA-CHACHA20-POLY1305","ECDHE-RSA-CHACHA20-POLY1305","ECDHE-ECDSA-AES128-GCM-SHA256","ECDHE-RSA-AES128-GCM-SHA256","ECDHE-ECDSA-AES256-SHA384","ECDHE-RSA-AES256-SHA384","ECDHE-ECDSA-AES128-SHA256","ECDHE-RSA-AES128-SHA256"] | |
 | proxmox_pveproxy_deny_from | 'all' | |
 | proxmox_pveproxy_policy | 'allow' | |
-| proxmox_pve_iso | {"name": "ubuntu server 18.04.1.0 x64","url": "http://releases.ubuntu.com/18.04.1.0/ubuntu-18.04.1.0-live-server-amd64.iso","state": "present"} | |
+| proxmox_pve_iso | {"name": "ubuntu-server-18.04.1.0-x64","url": "http://releases.ubuntu.com/18.04.1.0/ubuntu-18.04.1.0-live-server-amd64.iso","state": "present"} | |
 
 ## Dependencies
 

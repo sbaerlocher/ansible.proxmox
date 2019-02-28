@@ -19,7 +19,7 @@ proxmox_pveproxy_cipers:
 proxmox_pveproxy_deny_from: 'all'
 proxmox_pveproxy_policy: 'allow'
 
-proxmox_pve_iso:
-  - name: 'ubuntu server 18.04.1.0 x64'
-    url: 'http://releases.ubuntu.com/18.04.1.0/ubuntu-18.04.1.0-live-server-amd64.iso'
-    state: present
+proxmox_pve_iso: []
+  # - name: 'ubuntu-server-18.04.2.0-x64'
+  #  url: 'http://releases.ubuntu.com/18.04.2/ubuntu-18.04.2-live-server-amd64.iso'
+  #  state: present
