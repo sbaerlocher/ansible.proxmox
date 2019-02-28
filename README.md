@@ -1,6 +1,6 @@
 # Ansible Role: proxmox
 
-[![Build Status](https://img.shields.io/travis-ci/sbaerlocher/ansible.proxmox.svg?branch=master&style=popout-square)](https://travis-ci.org/sbaerlocher/ansible.proxmox) [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=popout-square)](https://sbaerlo.ch/licence) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-proxmox-blue.svg?style=popout-square)](https://galaxy.ansible.com/sbaerlocher/proxmox) [![Ansible Role](https://img.shields.io/ansible/role/d/35802.svg?style=popout-square)](https://galaxy.ansible.com/sbaerlocher/proxmox)
+[![Build Status](https://img.shields.io/travis/sbaerlocher/ansible.proxmox.svg?branch=master&style=popout-square)](https://travis-ci.org/sbaerlocher/ansible.proxmox) [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=popout-square)](https://sbaerlo.ch/licence) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-proxmox-blue.svg?style=popout-square)](https://galaxy.ansible.com/sbaerlocher/proxmox) [![Ansible Role](https://img.shields.io/ansible/role/d/35802.svg?style=popout-square)](https://galaxy.ansible.com/sbaerlocher/proxmox)
 
 ## Description
 
